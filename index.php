@@ -23,14 +23,14 @@
 
                 <div class="card-body">
                     <form action="./login/login.php" method="POST">
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
+                            <input type="text" name="usuario" class="form-control">
                             <label for="usuario">Usuário</label>
-                            <input type="text" name="usuario" class="form-control" placeholder="Insira o seu usuário">
                         </div>
 
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
+                            <input type="password" name="senha" class="form-control">
                             <label for="senha">Senha</label>
-                            <input type="password" name="senha" class="form-control" placeholder="Insira sua senha">
                         </div>
 
                         <div class="mb-3 text-center">

@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include('./verifica_cadastro.php');
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,34 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="./cadastrar.php">
+                    <?php
+                        if(isset($_SESSION['usuario_existe'])):
+                    ?>
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            Não foi possível cadastrar usuário
+                            <button class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php
+                        endif;
+
+                        //limpar sessao
+                        unset($_SESSION['usuario_existe']);
+                    ?>
+
+                    <?php
+                        if(isset($_SESSION['usuario_cadastrado'])):
+                    ?>
+                        <div class="alert alert-success alert-dismissible fade show">
+                            Usuário cadastrado com sucesso!
+                            <button class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php
+                        endif;
+
+                        //limpar sessao
+                        unset($_SESSION['usuario_cadastrado']);
+                    ?>
+                        <form action="cadastrar.php" method="POST">
                             <div class="form-floating mb-3">
                                 <input type="text" name="usuario" id="usuario" class="form-control">
                                 <label for="usuario">Insira o usuário</label>
@@ -32,7 +59,7 @@
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="text" name="email" id="email" class="form-control">
+                                <input type="mail" name="email" id="email" class="form-control">
                                 <label for="email">Insira o email</label>
                             </div>
 
@@ -50,7 +77,7 @@
                                 <select name="permissao" id="permissao" class="form-select">
                                     <option value="" selected disabled hidden>Defina a permissão</option>
                                     <option value=1>Administrador</option>
-                                    <option value=0>Usuário</option>
+                                    <option value=2>Usuário</option>
                                 </select>
                             </div>
 

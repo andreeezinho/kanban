@@ -16,6 +16,18 @@
 <body>
     <div class="container position-absolute top-50 start-50 translate-middle d-flex justify-content-center" >
         <div class="col-md-3 my-auto">
+            <?php
+                if(isset($_SESSION['nao_autenticado'])):
+            ?>
+                <div class="alert alert-danger alert-dismissible fade show">
+                    Usuário ou senha incorretos...
+                    <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php
+                unset($_SESSION['nao_autenticado']);
+                
+                endif;
+            ?>
             <div class="card">
                 <div class="card-header">
                         <h5 class="text-center">Entrar</h5>

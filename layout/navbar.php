@@ -16,7 +16,7 @@
             <div class="inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="./painel.php"><i class="bi-house-fill"></i> Início</a>
+                        <a class="nav-link" href="./painel.php"><i class="bi-house-fill"></i>Início</a>
                     </li>
 
                     <li class="nav-item mr-2">
@@ -24,7 +24,7 @@
                     </li>
                     
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="#"><i class="bi-person-vcard-fill"></i> Admistrador</a>
+                        <a class="nav-link" href="../adm/adm.php"><i class="bi-person-vcard-fill"></i> Admistrador</a>
                     </li>
 
                     <li class="nav-item mr-2">

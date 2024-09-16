@@ -16,7 +16,7 @@
 
         //verificar se banco de dados foi alterado
         if(mysqli_affected_rows($conexao) > 0){
-            $_SESSION['mesagem'] = 'Tarefa atualizada!';
+            $_SESSION['mensagem'] = 'Tarefa atualizada!';
             header('Location: ../painel/painel.php');
             exit();
         }else{
@@ -39,11 +39,11 @@
 
         //verificar se banco de dados foi alterado
         if(mysqli_affected_rows($conexao) > 0){
-            $_SESSION['mensagem_delete'] = 'Sua tarefa foi excluída com sucesso!';
+            $_SESSION['mensagem'] = 'Sua tarefa foi excluída com sucesso!';
             header('Location: ../painel/painel.php');
             exit();
         }else{
-            $_SESSION['mensagem_delete'] = 'Sua tarefa não foi excluída...';
+            $_SESSION['mensagem'] = 'Sua tarefa não foi excluída...';
         }
     }
 
@@ -61,7 +61,7 @@
 
         //verificar se banco de dados foi alterado
         if(mysqli_affected_rows($conexao) > 0){
-            $_SESSION['mesagem'] = 'Tarefa atualizada!';
+            $_SESSION['mensagem'] = 'Tarefa atualizada!';
             header('Location: ../painel/painel.php');
             exit();
         }else{
@@ -84,11 +84,11 @@
 
         //verificar se banco de dados foi alterado
         if(mysqli_affected_rows($conexao) > 0){
-            $_SESSION['mensagem_delete'] = 'Sua tarefa foi excluída com sucesso!';
+            $_SESSION['mensagem'] = 'Sua tarefa foi excluída com sucesso!';
             header('Location: ../painel/painel.php');
             exit();
         }else{
-            $_SESSION['mensagem_delete'] = 'Sua tarefa não foi excluída...';
+            $_SESSION['mensagem'] = 'Sua tarefa não foi excluída...';
         }
     }
     
@@ -105,10 +105,10 @@
 
         //verificar se banco de dados foi alterado
         if(mysqli_affected_rows($conexao) > 0){
-            $_SESSION['mensagem_delete'] = 'Sua tarefa foi excluída com sucesso!';
+            $_SESSION['mensagem'] = 'Sua tarefa foi excluída com sucesso!';
             header('Location: ../painel/painel.php');
             exit();
         }else{
-            $_SESSION['mensagem_delete'] = 'Sua tarefa não foi excluída...';
+            $_SESSION['mensagem'] = 'Sua tarefa não foi excluída...';
         }
     }

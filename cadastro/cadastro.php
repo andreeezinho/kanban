@@ -1,5 +1,5 @@
 <?php
-    include('./verifica_cadastro.php');
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <a href="../painel/painel.php" class="btn mt-2 mx-2 btn-primary" for="volta">
+    <a href="../adm/adm.php" class="btn mt-2 mx-2 btn-primary" for="volta">
         Voltar
         <span class="btn btn-close" data-bs-dismiss="alert" aria-label="Close" id="volta"></span>
     </a >
@@ -21,39 +21,39 @@
     <div class="container position-absolute top-50 start-50 translate-middle">
         <div class="row justify-content-center">
             <div class="col-md-4">
+            <?php
+                if (isset($_SESSION['usuario_existe'])):
+            ?>
+                <div class="alert alert-danger alert-dismissible fade show">
+                    Não foi possível cadastrar usuário
+                    <button class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php
+                endif;
+
+                //limpar sessao
+                unset($_SESSION['usuario_existe']);
+            ?>
+
+            <?php
+                if (isset($_SESSION['usuario_cadastrado'])):
+            ?>
+                <div class="alert alert-success alert-dismissible fade show">
+                    Usuário cadastrado com sucesso!
+                    <button class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php
+                endif;
+
+                //limpar sessao
+                unset($_SESSION['usuario_cadastrado']);
+            ?>
                 <div class="card">
                     <div class="card-header">
                         <h5 class="text-center">Cadastrar Usuário</h5>
                     </div>
 
                     <div class="card-body">
-                        <?php
-                        if (isset($_SESSION['usuario_existe'])):
-                        ?>
-                            <div class="alert alert-danger alert-dismissible fade show">
-                                Não foi possível cadastrar usuário
-                                <button class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php
-                        endif;
-
-                        //limpar sessao
-                        unset($_SESSION['usuario_existe']);
-                        ?>
-
-                        <?php
-                        if (isset($_SESSION['usuario_cadastrado'])):
-                        ?>
-                            <div class="alert alert-success alert-dismissible fade show">
-                                Usuário cadastrado com sucesso!
-                                <button class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php
-                        endif;
-
-                        //limpar sessao
-                        unset($_SESSION['usuario_cadastrado']);
-                        ?>
                         <form action="cadastrar.php" method="POST">
                             <div class="form-floating mb-3">
                                 <input type="text" name="usuario" id="usuario" class="form-control">

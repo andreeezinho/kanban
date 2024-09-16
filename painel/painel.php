@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel - To Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -21,6 +22,9 @@
     ?>
 
 <div class="container pt-5">
+        <?php
+            include('../acoes/mensagem.php');
+        ?>
         <div class="row justify-content-center mt-5">
             <!-- DO (FAZER) -->
             <div class="col-sm-8 col-md-8 col-lg-3 col-xg-3 mx-1 mb-2 bg-dark p-3">
@@ -52,11 +56,11 @@
 
                             <div class="d-flex justify-content-center">
                                 <form action="../acoes/acoes.php" method="POST">
-                                    <button type="submit" name="tarefa_fazer" value=<?=$fazer['id_tarefa'] ?> class="btn btn-primary px-4"><i class="bi-check"></i></button>
+                                    <button type="submit" name="tarefa_fazer" value=<?=$fazer['id_tarefa'] ?> class="btn btn-primary px-4 mx-2"><i class="bi-check"></i></button>
                                 </form>
                                 
                                 <form action="../acoes/acoes.php" method="POST">
-                                    <button type="submit" name="delete_fazer" value=<?=$fazer['id_tarefa'] ?> class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                                    <button type="submit" name="delete_fazer" value=<?=$fazer['id_tarefa'] ?> class="btn btn-danger px-4 mx-2"><i class="bi-trash"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -100,13 +104,13 @@
                             <p class="card-text"><?=$fazendo['descricao'] ?></p>
                             <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($fazendo['data_criacao'])) ?></p>
 
-                            <div class="inline text-center">
+                            <div class="d-flex justify-content-center">
                                 <form action="../acoes/acoes.php" method="POST">
-                                    <button type="submit" name="tarefa_fazendo" value=<?=$fazendo['id_tarefa'] ?> class="btn btn-primary px-4"><i class="bi-check"></i></button>
+                                    <button type="submit" name="tarefa_fazendo" value=<?=$fazendo['id_tarefa'] ?> class="btn btn-primary px-4 mx-2"><i class="bi-check"></i></button>
                                 </form>
                                 
                                 <form action="../acoes/acoes.php" method="POST">
-                                    <button type="submit" name="delete_fazendo" value=<?=$fazendo['id_tarefa'] ?> class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                                    <button type="submit" name="delete_fazendo" value=<?=$fazendo['id_tarefa'] ?> class="btn btn-danger px-4 mx-2"><i class="bi-trash"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -152,7 +156,7 @@
                             <p class="card-text"><?=$feito['descricao'] ?></p>
                             <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($feito['data_criacao'])) ?></p>
 
-                            <div class="inline text-center">                              
+                            <div class="d-flex justify-content-center">                              
                                 <form action="../acoes/acoes.php" method="POST">
                                     <button type="submit" name="delete_feito" value=<?=$feito['id_tarefa'] ?> class="btn btn-danger px-4"><i class="bi-trash"></i></button>
                                 </form>
@@ -172,6 +176,7 @@
     </div>
 
     <!-- copiar esses códigos js para o bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

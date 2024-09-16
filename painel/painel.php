@@ -50,9 +50,14 @@
                             <p class="card-text"><?=$fazer['descricao'] ?></p>
                             <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($fazer['data_criacao'])) ?></p>
 
-                            <div class="inline text-center">
-                                <button class="btn btn-primary px-4"><i class="bi-check"></i></button>
-                                <button class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                            <div class="d-flex justify-content-center">
+                                <form action="../acoes/acoes.php" method="POST">
+                                    <button type="submit" name="tarefa_fazer" value=<?=$fazer['id_tarefa'] ?> class="btn btn-primary px-4"><i class="bi-check"></i></button>
+                                </form>
+                                
+                                <form action="../acoes/acoes.php" method="POST">
+                                    <button type="submit" name="delete_fazer" value=<?=$fazer['id_tarefa'] ?> class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -96,8 +101,13 @@
                             <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($fazendo['data_criacao'])) ?></p>
 
                             <div class="inline text-center">
-                                <button class="btn btn-primary px-4"><i class="bi-check"></i></button>
-                                <button class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                                <form action="../acoes/acoes.php" method="POST">
+                                    <button type="submit" name="tarefa_fazendo" value=<?=$fazendo['id_tarefa'] ?> class="btn btn-primary px-4"><i class="bi-check"></i></button>
+                                </form>
+                                
+                                <form action="../acoes/acoes.php" method="POST">
+                                    <button type="submit" name="delete_fazendo" value=<?=$fazendo['id_tarefa'] ?> class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -142,9 +152,10 @@
                             <p class="card-text"><?=$feito['descricao'] ?></p>
                             <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($feito['data_criacao'])) ?></p>
 
-                            <div class="inline text-center">
-                                <button class="btn btn-primary px-4"><i class="bi-check"></i></button>
-                                <button class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                            <div class="inline text-center">                              
+                                <form action="../acoes/acoes.php" method="POST">
+                                    <button type="submit" name="delete_feito" value=<?=$feito['id_tarefa'] ?> class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                                </form>
                             </div>
                         </div>
                     </div>

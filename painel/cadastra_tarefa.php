@@ -17,6 +17,7 @@ session_start();
     <?php
         include('../layout/navbar.php');
     ?>
+    
     <div class="container position-absolute top-50 start-50 translate-middle d-flex justify-content-center">
         <div class="col-md-6 my-auto">
             <?php

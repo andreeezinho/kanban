@@ -1,14 +1,9 @@
 <?php
     include('../login/verifica_login.php');
 
-    echo $_SESSION['id_usuario'];
-    echo '       ';
-    echo $_SESSION['usuario'];
-    echo $_SESSION['nome'];
-    echo $_SESSION['email'];
-    echo $_SESSION['data_nascimento'];
-    echo $_SESSION['data_cadastro'];
-    echo $_SESSION['permissao'];
+    require('../acoes/conexao.php');
+
+    $id =  $_SESSION['id_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -17,20 +12,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel - To Do List</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
     <?php
         include('../layout/navbar.php');
     ?>
 
+<div class="container pt-5">
+        <div class="row justify-content-center mt-5">
+            <!-- DO (FAZER) -->
+            <div class="col-sm-8 col-md-8 col-lg-3 col-xg-3 mx-1 mb-2 bg-dark p-3">
+                <h3 class="title text-center text-light mb-5">Fazer</h3>
 
-    <a href="../login/logout.php">Encerrar sessão</a>
+                <!-- select das tarefas -->
+                <?php
+                    //comando sql
+                    $sql = "SELECT * FROM tarefa WHERE id_usuario = '$id' and status_tarefa = 'Fazer'";
 
-    <a href="../cadastro/cadastro.php">Cadastrar usuario</a>
+                    $tarefa_fazer = mysqli_query($conexao, $sql);
+
+                    //verificar se há tarefas
+                    if(mysqli_num_rows($tarefa_fazer) > 0){
+                        //passar os dados para o html
+                        foreach($tarefa_fazer as $fazer){
+                ?>
+
+                <!-- card -->
+                <div class="row justify-content-center mb-3">
+                    <div class="card col-11">
+                        <div class="card-header text-center">
+                            <h5 class="my-auto card-title"><?=$fazer['nome_tarefa'] ?></h5>
+                        </div>
+
+                        <div class="card-body text-center">
+                            <p class="card-text"><?=$fazer['descricao'] ?></p>
+                            <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($fazer['data_criacao'])) ?></p>
+
+                            <div class="inline text-center">
+                                <button class="btn btn-primary px-4"><i class="bi-check"></i></button>
+                                <button class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+                        }
+                    }else{
+                        echo '<h6 class="text-light text-center">Não há tarefas por aqui...</h6>';
+                    }
+                ?>
+            </div>
+
+            <!-- FAZENDO (DOING) -->
+
+            <div class="col-sm-8 col-md-8 col-lg-3 col-xg-3 mx-1 mb-2 bg-dark p-3">
+                <h3 class="title text-center text-light mb-5">Fazendo</h3>
+
+                <!-- select das tarefas -->
+                <?php
+                    //comando sql
+                    $sql = "SELECT * FROM tarefa WHERE id_usuario = '$id' and status_tarefa = 'Fazendo'";
+
+                    $tarefa_fazendo = mysqli_query($conexao, $sql);
+
+                    //verificar se há tarefas
+                    if(mysqli_num_rows($tarefa_fazendo) > 0){
+                        //passar os dados para o html
+                        foreach($tarefa_fazendo as $fazendo){
+                ?>
+
+                <!-- card -->
+                <div class="row justify-content-center mb-3">
+                    <div class="card col-11">
+                        <div class="card-header text-center">
+                            <h5 class="my-auto card-title"><?=$fazendo['nome_tarefa'] ?></h5>
+                        </div>
+
+                        <div class="card-body text-center">
+                            <p class="card-text"><?=$fazendo['descricao'] ?></p>
+                            <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($fazendo['data_criacao'])) ?></p>
+
+                            <div class="inline text-center">
+                                <button class="btn btn-primary px-4"><i class="bi-check"></i></button>
+                                <button class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+                        }
+                    }else{
+                        echo '<h6 class="text-light text-center">Não há tarefas por aqui...</h6>';
+                    }
+                ?>
+            </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+            <!-- DONE (FEITO) -->
+            <div class="col-sm-8 col-md-8 col-lg-3 col-xg-3 mx-1 mb-2 bg-dark p-3">
+                <h3 class="title text-center text-light mb-5">Feito</h3>
+
+                <!-- card -->
+                <!-- select das tarefas -->
+                <?php
+                    //comando sql
+                    $sql = "SELECT * FROM tarefa WHERE id_usuario = '$id' and status_tarefa = 'Feito'";
+
+                    $tarefa_feito = mysqli_query($conexao, $sql);
+
+                    //verificar se há tarefas
+                    if(mysqli_num_rows($tarefa_feito) > 0){
+                        //passar os dados para o html
+                        foreach($tarefa_feito as $feito){
+                ?>
+
+                <!-- card -->
+                <div class="row justify-content-center mb-3">
+                    <div class="card col-11">
+                        <div class="card-header text-center">
+                            <h5 class="my-auto card-title"><?=$feito['nome_tarefa'] ?></h5>
+                        </div>
+
+                        <div class="card-body text-center">
+                            <p class="card-text"><?=$feito['descricao'] ?></p>
+                            <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($feito['data_criacao'])) ?></p>
+
+                            <div class="inline text-center">
+                                <button class="btn btn-primary px-4"><i class="bi-check"></i></button>
+                                <button class="btn btn-danger px-4"><i class="bi-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+                        }
+                    }else{
+                        echo '<h6 class="text-light text-center">Não há tarefas por aqui...</h6>';
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- copiar esses códigos js para o bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 </html>
 

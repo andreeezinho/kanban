@@ -21,7 +21,7 @@
         include('../layout/navbar.php');
     ?>
 
-<div class="container pt-5">
+    <div class="container pt-5">
         <?php
             include('../acoes/mensagem.php');
         ?>
@@ -52,7 +52,7 @@
 
                         <div class="card-body text-center">
                             <p class="card-text"><?=$fazer['descricao'] ?></p>
-                            <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($fazer['data_criacao'])) ?></p>
+                            <p class="card-text text-muted border-bottom"><i class="bi-bookmark"></i> <?=date('d/m/y - H:i:s', strtotime($fazer['data_criacao'])) ?></p>
 
                             <div class="d-flex justify-content-center">
                                 <form action="../acoes/acoes.php" method="POST">
@@ -102,7 +102,7 @@
 
                         <div class="card-body text-center">
                             <p class="card-text"><?=$fazendo['descricao'] ?></p>
-                            <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($fazendo['data_criacao'])) ?></p>
+                            <p class="card-text text-muted border-bottom"><i class="bi-bookmark"></i> <?=date('d/m/y - H:i:s', strtotime($fazendo['data_criacao'])) ?></p>
 
                             <div class="d-flex justify-content-center">
                                 <form action="../acoes/acoes.php" method="POST">
@@ -154,7 +154,8 @@
 
                         <div class="card-body text-center">
                             <p class="card-text"><?=$feito['descricao'] ?></p>
-                            <p class="card-text text-muted"><?=date('d/m/y - H:i:s', strtotime($feito['data_criacao'])) ?></p>
+                            <p class="card-text text-muted border-bottom mb-0"><i class="bi-bookmark"></i>  <?=date('d/m/y - H:i:s', strtotime($feito['data_criacao'])) ?></p>
+                            <p class="card-text text-muted"><i class="bi-bookmark-check-fill"></i> <?=date('d/m/y - H:i:s', strtotime($feito['data_conclusao'])) ?></p>
 
                             <div class="d-flex justify-content-center">                              
                                 <form action="../acoes/acoes.php" method="POST">

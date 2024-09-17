@@ -54,7 +54,7 @@
         $id_tarefa = mysqli_real_escape_string($conexao, $_POST['tarefa_fazendo']);
 
         //comando sql
-        $sql = "UPDATE tarefa SET status_tarefa = 'Feito' WHERE id_tarefa = '$id_tarefa'";
+        $sql = "UPDATE tarefa SET status_tarefa = 'Feito', data_conclusao = NOW() WHERE id_tarefa = '$id_tarefa'";
 
         //executar comando sql
         mysqli_query($conexao, $sql);

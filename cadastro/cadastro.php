@@ -13,14 +13,13 @@
 </head>
 
 <body>
-    <a href="../adm/adm.php" class="btn mt-2 mx-2 btn-primary" for="volta">
-        Voltar
-        <span class="btn btn-close" data-bs-dismiss="alert" aria-label="Close" id="volta"></span>
-    </a >
+    <?php
+        include('../layout/navbar.php');
+    ?>
 
     <div class="container position-absolute top-50 start-50 translate-middle">
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-5">
             <?php
                 if (isset($_SESSION['usuario_existe'])):
             ?>

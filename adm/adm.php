@@ -18,6 +18,20 @@
     ?>
 
     <div class="container mt-5">
+
+    <?php
+                if (isset($_SESSION['edit_erro'])):
+            ?>
+                <div class="alert alert-danger alert-dismissible fade show">
+                    Não foi possível cadastrar usuário
+                    <button class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php
+                endif;
+
+                //limpar sessao
+                unset($_SESSION['edit_erro']);
+            ?>
         <div class="row mt">
             <div class="col-md-12 mt-5">
                 <div class="card">
@@ -65,7 +79,7 @@
                                     <th><?=date('d/m/y', strtotime($usuario['data_nascimento'])) ?></th>
                                     <th><?=date('d/m/y', strtotime($usuario['data_cadastro'])) ?></th>
                                     <th class="d-flex justify-content-center">
-                                        <button class="btn btn-primary mx-1">Editar</button>
+                                        <a href="../edit/usuario_edit.php?id_usuario=<?=$usuario['id_usuario'] ?>" class="btn btn-primary text-light mx-1">Editar</a>
 
                                         <form action="" method="POST">
                                             <button class="btn btn-danger mx-1">Excluir</button>

@@ -126,7 +126,10 @@
         $permissao = mysqli_real_escape_string($conexao, trim($_POST['permissao']));
 
         //comando sql
-        $sql = "UPDATE usuario set usuario = '$usuario', nome = '$nome', email = '$email', data_nascimento = '$data_nascimento', permissao = '$permissao'";
+        $sql = "UPDATE usuario SET usuario = '$usuario', nome = '$nome', email = '$email', data_nascimento = '$data_nascimento', permissao = '$permissao'";
+
+        //nao reportar  erro para o usuario na web
+        mysqli_report(MYSQLI_REPORT_STRICT);
 
         //se senha nao estiver vazio
         if(!empty($senha)){
